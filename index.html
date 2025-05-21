@@ -127,6 +127,11 @@
         transform: translateY(-10vh) scale(0.5);
         opacity: 0;
       }
+
+    .with-background {
+      background: url('rantika.jpg') no-repeat center center fixed;
+      background-size: cover;
+}
     }
   </style>
 </head>
@@ -168,6 +173,7 @@
     document.getElementById("awal").classList.add("hidden");
     document.querySelector("button").classList.add("hidden");
     document.getElementById("pesan").classList.remove("hidden");
+    document.body.classList.add("with-background"); // Tambahan ini
     document.getElementById("musik").play();
   }
 </script>
