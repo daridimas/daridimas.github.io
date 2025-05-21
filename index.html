@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selamat Ulang Tahun, Rantika!</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
       background: radial-gradient(circle, #ffe6f0, #ffd6e8);
-      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
       overflow-y: auto;
       transition: background 1.5s ease;
     }
@@ -25,54 +29,50 @@
     }
 
     .container {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(0,0,0,0.15);
       max-width: 600px;
       text-align: center;
-      animation: fadeIn 2s ease-in;
-      position: relative;
       margin: 20px;
-      backdrop-filter: blur(5px);
-      transition: all 0.5s ease;
-    }
-
-    img {
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 20px;
-      border: 5px solid #ff99cc;
-      margin-bottom: 20px;
-      animation: zoomIn 1.5s ease;
+      position: relative;
+      backdrop-filter: blur(8px);
+      animation: fadeIn 1.5s ease-out;
       transition: all 0.3s ease;
     }
 
+    img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 5px solid #ff99cc;
+      margin-bottom: 25px;
+      animation: zoomIn 1s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
     img:hover {
-      transform: rotate(-3deg) scale(1.05);
-      cursor: pointer;
+      transform: rotate(-2deg) scale(1.03);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
 
     h1 {
       color: #d63384;
-      font-size: 28px;
-      margin-bottom: 10px;
+      font-size: 2.2em;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 
     p {
-      font-size: 18px;
-      color: #333;
-      line-height: 1.6;
+      font-size: 1.1em;
+      color: #444;
+      line-height: 1.7;
       margin: 15px 0;
-    }
-
-    .footer {
-      margin-top: 25px;
-      font-size: 16px;
-      color: #666;
-      font-style: italic;
+      padding: 0 10px;
     }
 
     button {
@@ -98,68 +98,100 @@
     .hidden {
       opacity: 0;
       visibility: hidden;
+      max-height: 0;
       transition: all 0.5s ease;
     }
 
     .visible {
       opacity: 1;
       visibility: visible;
+      max-height: 500px;
+    }
+
+    .footer {
+      margin-top: 30px;
+      color: #666;
+      font-size: 0.95em;
+      line-height: 1.5;
     }
 
     .heart {
-      color: red;
-      font-size: 32px;
-      animation: pulse 1s infinite;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes zoomIn {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes fadeBackground {
-      from { background-color: #ffd6e8; }
-      to { background-color: rgba(255, 214, 232, 0); }
+      color: #ff3366;
+      font-size: 1.8em;
+      display: inline-block;
+      animation: pulse 1.2s infinite;
+      margin: 10px 0;
     }
 
     .hearts-bg span {
       position: absolute;
-      display: block;
       color: #ff4da6;
-      font-size: 20px;
+      font-size: 24px;
       animation: floatHearts 6s linear infinite;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
     }
 
     @keyframes floatHearts {
-      0% { transform: translateY(100vh) scale(1); opacity: 1; }
-      100% { transform: translateY(-10vh) scale(0.5); opacity: 0; }
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-20vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeBackground {
+      from { background-color: rgba(255,214,232,0.5); }
+      to { background-color: rgba(255,214,232,0); }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 20px;
+        margin: 15px;
+      }
+      
+      img {
+        width: 220px;
+        height: 220px;
+      }
+      
+      h1 {
+        font-size: 1.8em;
+      }
+      
+      p {
+        font-size: 1em;
+      }
     }
 
     @media (max-width: 480px) {
-      .container {
-        padding: 15px;
-        margin: 10px;
-      }
       img {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
       }
+      
       h1 {
-        font-size: 24px;
-      }
-      p {
-        font-size: 16px;
+        font-size: 1.6em;
       }
     }
   </style>
@@ -168,33 +200,45 @@
 
 <div class="container">
   <div class="hearts-bg">
-    <span style="left:10%;">❤</span>
-    <span style="left:20%; animation-delay: 1s;">❤</span>
-    <span style="left:30%; animation-delay: 2s;">❤</span>
-    <span style="left:40%; animation-delay: 3s;">❤</span>
-    <span style="left:50%; animation-delay: 4s;">❤</span>
-    <span style="left:60%; animation-delay: 5s;">❤</span>
-    <span style="left:70%; animation-delay: 2.5s;">❤</span>
-    <span style="left:80%; animation-delay: 1.5s;">❤</span>
+    <span style="left:10%; animation-delay:0.5s">❤</span>
+    <span style="left:20%; animation-delay:1.2s">❤</span>
+    <span style="left:30%; animation-delay:2.5s">❤</span>
+    <span style="left:40%; animation-delay:0.8s">❤</span>
+    <span style="left:50%; animation-delay:3s">❤</span>
+    <span style="left:60%; animation-delay:1.5s">❤</span>
+    <span style="left:70%; animation-delay:2s">❤</span>
+    <span style="left:80%; animation-delay:0.3s">❤</span>
   </div>
-  <img src="rantika.jpg" alt="Foto Rantika Wahyuni" id="fotoRantika">
+  
+  <img src="rantika.jpg" alt="Foto Rantika" id="fotoRantika">
   <h1>Selamat Ulang Tahun, Rantika Wahyuni!</h1>
   <p id="awal">Ada pesan spesial buat kamu...</p>
-  <button onclick="tampilkanPesan(); luncurkanConfetti()">🎁 Buka Kejutan</button>
+  
+  <button onclick="tampilkanPesan(); luncurkanConfetti()">🎁 Buka Pesan</button>
+  
+  <!-- Pesan tetap dipertahankan sesuai versi asli -->
   <div id="pesan" class="hidden">
     <p>
-      Semoga Rantika panjang umur, sehat selalu, penuh keberkahan,<br>
+      Semoga Ayang panjang umur, sehat selalu, penuh keberkahan,<br>
       dan impianmu tercapai satu per satu.<br><br>
       Tahun ini... semoga kita <strong>menikah</strong>.<br>
       Aamiin Ya Rabb.<br><br>
     </p>
   </div>
-  <div class="footer">Untukmu Rantika Wahyuni,<br><span class="heart">♥</span><br>Dari Dimas Arie Prasojo</div>
+  
+  <div class="footer">
+    Untukmu Rantika Wahyuni,<br>
+    <span class="heart">♥</span><br>
+    Dari Dimas Arie Prasojo
+  </div>
 </div>
 
 <audio id="musik" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5df2d2b730.mp3" type="audio/mpeg">
-  Musik tidak didukung browser Anda.
+  <source src="https://cdn.pixabay.com/audio/2023/10/27/audio_5b740c4c3e.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="confettiSound">
+  <source src="https://cdn.pixabay.com/audio/2022/08/04/audio_1727b3a0d3.mp3" type="audio/mpeg">
 </audio>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
@@ -204,37 +248,59 @@
     document.getElementById("awal").classList.add("hidden");
     document.querySelector("button").classList.add("hidden");
     document.getElementById("pesan").classList.add("visible");
-    document.getElementById("musik").play();
     
-    // Efek pada foto
+    const musik = document.getElementById("musik");
+    musik.volume = 0.4;
+    musik.play().catch(err => console.log('Autoplay membutuhkan interaksi pengguna'));
+    
     const foto = document.getElementById("fotoRantika");
-    foto.style.transform = "rotate(-3deg) scale(1.1)";
-    foto.style.border = "5px solid #e60073";
-    foto.style.boxShadow = "0 10px 20px rgba(0,0,0,0.2)";
+    foto.style.transform = "rotate(-2deg) scale(1.05)";
+    foto.style.borderColor = "#ff3385";
   }
 
   function luncurkanConfetti() {
-    confetti({
+    const confettiSound = document.getElementById("confettiSound");
+    confettiSound.volume = 0.6;
+    confettiSound.currentTime = 0;
+    confettiSound.play();
+
+    const count = 200;
+    const defaults = {
+      origin: { y: 0.6 },
+      colors: ['#ff69b4', '#ff1493', '#ff85a2'],
       particleCount: 150,
       spread: 100,
-      origin: { y: 0.6 },
-      colors: ['#ff69b4', '#ff1493', '#ff85a2']
-    });
+      startVelocity: 30,
+      decay: 0.92
+    };
 
-    // Multiple confetti bursts
-    const count = 200;
-    const defaults = { origin: { y: 0.7 } };
-
-    function fire(particleRatio, opts) {
+    function fire(ratio, opts) {
       confetti(Object.assign({}, defaults, opts, {
-        particleCount: Math.floor(count * particleRatio)
+        particleCount: Math.floor(count * ratio)
       }));
     }
 
-    fire(0.25, { spread: 26, startVelocity: 55 });
-    fire(0.2, { spread: 60 });
-    fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-    fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+    fire(0.25, { spread: 26, angle: 55 });
+    fire(0.2, { spread: 60, angle: -55 });
+    setTimeout(() => fire(0.35, { spread: 100 }), 150);
+    setTimeout(() => fire(0.1, { spread: 120 }), 300);
+    
+    setTimeout(() => {
+      confetti({
+        particleCount: 80,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: ['#ff69b4']
+      });
+      confetti({
+        particleCount: 80,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: ['#ff1493']
+      });
+    }, 200);
   }
 </script>
 
