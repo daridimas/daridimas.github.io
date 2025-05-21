@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Selamat Ulang Tahun, Rantika!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle, #ffe6f0, #ffd6e8);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.15);
+      max-width: 600px;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+      position: relative;
+    }
+
+    img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 5px solid #ff99cc;
+      margin-bottom: 20px;
+      animation: zoomIn 1.5s ease;
+    }
+
+    h1 {
+      color: #d63384;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 16px;
+      color: #666;
+      font-style: italic;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff66b2;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #e60073;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .heart {
+      color: red;
+      font-size: 32px;
+      animation: pulse 1s infinite;
+    }
+
+    /* Animasi tambahan */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .hearts-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hearts-bg span {
+      position: absolute;
+      display: block;
+      color: #ff4da6;
+      font-size: 20px;
+      animation: floatHearts 6s linear infinite;
+    }
+
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="hearts-bg">
+    <span style="left:10%;">❤</span>
+    <span style="left:20%; animation-delay: 1s;">❤</span>
+    <span style="left:30%; animation-delay: 2s;">❤</span>
+    <span style="left:40%; animation-delay: 3s;">❤</span>
+    <span style="left:50%; animation-delay: 4s;">❤</span>
+    <span style="left:60%; animation-delay: 5s;">❤</span>
+    <span style="left:70%; animation-delay: 2.5s;">❤</span>
+    <span style="left:80%; animation-delay: 1.5s;">❤</span>
+  </div>
+  <img src="rantika.jpg" alt="Foto Rantika Wahyuni" id="fotoRantika">
+  <h1>Selamat Ulang Tahun, Rantika Wahyuni!</h1>
+  <p id="awal">Ada pesan spesial buat kamu...</p>
+  <button onclick="tampilkanPesan()">Buka Pesan</button>
+  <div id="pesan" class="hidden">
+    <p>
+      Semoga Rantika panjang umur, sehat selalu, penuh keberkahan,<br>
+      dan impianmu tercapai satu per satu.<br><br>
+      Tahun ini... semoga kita <strong>menikah</strong>.<br>
+      Aamiin Ya Rabb.<br><br>
+    </p>
+  </div>
+  <div class="footer">Untukmu Rantika Wahyuni,<br><span class="heart">♥</span><br>Dari Dimas Arie Prasojo</div>
+</div>
+
+<audio id="musik" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  Musik tidak didukung browser Anda.
+</audio>
+
+<script>
+  function tampilkanPesan() {
+    document.getElementById("awal").classList.add("hidden");
+    document.querySelector("button").classList.add("hidden");
+    document.getElementById("pesan").classList.remove("hidden");
+    document.getElementById("musik").play();
+  }
+</script>
+
+</body>
+</html>
