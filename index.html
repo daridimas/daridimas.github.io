@@ -195,7 +195,7 @@
       }
 
       #pesan p {
-  margin: 0;
+  margin: 10px 0;
   padding: 0;
 }
 
@@ -208,6 +208,20 @@
   font-size: 1.1em;
 }
     }
+
+    .highlight-text {
+  font-size: 1.1em;
+  margin: 12px 0;
+  padding: 8px;
+  background: rgba(255, 230, 240, 0.3);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.highlight-text strong {
+  color: #e60073;
+  font-weight: 600;
+}
   </style>
 </head>
 <body>
@@ -232,14 +246,18 @@
   
   <!-- Pesan tetap dipertahankan sesuai versi asli -->
   <div id="pesan" class="hidden">
-  <p style="margin: 10px 0; line-height: 1.5">
-    Semoga Rantika panjang umur, sehat selalu, penuh keberkahan,<br>
-    dan impianmu tercapai satu per satu.
-    <span style="display: block; margin: 15px 0">
-      Tahun ini... semoga kita <strong style="color: #e60073">menikah</strong>.
-    </span>
-    Aamiin Ya Rabb.
+  <p style="margin: 8px 0; line-height: 1.4">
+    Semoga Rantika panjang umur, sehat selalu,<br> 
+    penuh keberkahan dan impianmu tercapai.
   </p>
+  <div style="margin: 15px 0; position: relative">
+    <div class="highlight-text">
+      Tahun ini... semoga kita <strong>menikah</strong>
+    </div>
+    <p style="margin: 12px 0 0; font-style: italic">
+      Aamiin Ya Rabb.
+    </p>
+  </div>
 </div>
   
   <div class="footer">
