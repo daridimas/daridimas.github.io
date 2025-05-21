@@ -193,6 +193,20 @@
       h1 {
         font-size: 1.6em;
       }
+
+      #pesan p {
+  margin: 0;
+  padding: 0;
+}
+
+#pesan br {
+  display: none;
+}
+
+#pesan strong {
+  transition: color 0.3s ease;
+  font-size: 1.1em;
+}
     }
   </style>
 </head>
@@ -218,13 +232,15 @@
   
   <!-- Pesan tetap dipertahankan sesuai versi asli -->
   <div id="pesan" class="hidden">
-    <p>
-      Semoga Ayang panjang umur, sehat selalu, penuh keberkahan,<br>
-      dan impianmu tercapai satu per satu.<br><br>
-      Tahun ini... semoga kita <strong>menikah</strong>.<br>
-      Aamiin Ya Rabb.<br><br>
-    </p>
-  </div>
+  <p style="margin: 10px 0; line-height: 1.5">
+    Semoga Rantika panjang umur, sehat selalu, penuh keberkahan,<br>
+    dan impianmu tercapai satu per satu.
+    <span style="display: block; margin: 15px 0">
+      Tahun ini... semoga kita <strong style="color: #e60073">menikah</strong>.
+    </span>
+    Aamiin Ya Rabb.
+  </p>
+</div>
   
   <div class="footer">
     Untukmu Rantika Wahyuni,<br>
