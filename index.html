@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selamat Ulang Tahun, Rantika!</title>
   <style>
     body {
@@ -25,6 +26,7 @@
       text-align: center;
       animation: fadeIn 2s ease-in;
       position: relative;
+      margin: 20px;
     }
 
     img {
@@ -35,6 +37,12 @@
       border: 5px solid #ff99cc;
       margin-bottom: 20px;
       animation: zoomIn 1.5s ease;
+      transition: all 0.3s ease;
+    }
+
+    img:hover {
+      transform: rotate(-3deg) scale(1.05);
+      cursor: pointer;
     }
 
     h1 {
@@ -128,6 +136,23 @@
         opacity: 0;
       }
     }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+        margin: 10px;
+      }
+      img {
+        width: 200px;
+        height: 200px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -146,7 +171,7 @@
   <img src="rantika.jpg" alt="Foto Rantika Wahyuni" id="fotoRantika">
   <h1>Selamat Ulang Tahun, Rantika Wahyuni!</h1>
   <p id="awal">Ada pesan spesial buat kamu...</p>
-  <button onclick="tampilkanPesan()">Buka Pesan</button>
+  <button onclick="tampilkanPesan(); luncurkanConfetti()">Buka Pesan</button>
   <div id="pesan" class="hidden">
     <p>
       Semoga Rantika panjang umur, sehat selalu, penuh keberkahan,<br>
@@ -163,12 +188,37 @@
   Musik tidak didukung browser Anda.
 </audio>
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script>
   function tampilkanPesan() {
     document.getElementById("awal").classList.add("hidden");
     document.querySelector("button").classList.add("hidden");
     document.getElementById("pesan").classList.remove("hidden");
     document.getElementById("musik").play();
+  }
+
+  function luncurkanConfetti() {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#ff69b4', '#ff1493', '#ff85a2']
+    });
+    
+    // Multiple bursts
+    setTimeout(() => confetti({
+      particleCount: 50,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 }
+    }), 250);
+
+    setTimeout(() => confetti({
+      particleCount: 50,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 }
+    }), 400);
   }
 </script>
 
