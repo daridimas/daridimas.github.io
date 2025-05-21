@@ -129,9 +129,37 @@
       }
 
     .with-background {
-      background: url('/rantika.jpg') no-repeat center center fixed;
+      background: url('./rantika.jpg') no-repeat center center fixed;
       background-size: cover;
     }
+
+    /* Efek salju hati */
+.heart-snow {
+  position: fixed;
+  top: -10px;
+  color: pink;
+  font-size: 20px;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Efek gelembung cinta */
+.heart-bubble {
+  position: fixed;
+  bottom: 0;
+  color: red;
+  font-size: 24px;
+  animation: rise 8s linear infinite;
+  z-index: 1;
+}
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
   </style>
 </head>
 <body>
@@ -162,6 +190,9 @@
   <div class="footer">Untukmu Rantika Wahyuni,<br><span class="heart">♥</span><br>Dari Dimas Arie Prasojo</div>
 </div>
 
+  <div id="snow-container"></div>
+<div id="bubble-container"></div>
+
 <audio id="musik" loop>
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5df2d2b730.mp3" type="audio/mpeg">
   Musik tidak didukung browser Anda.
@@ -175,7 +206,34 @@
     document.body.classList.add("with-background"); // Tambahan ini
     document.getElementById("musik").play();
   }
+
+  function buatSaljuHati() {
+  const snowContainer = document.getElementById('snow-container');
+  const heart = document.createElement('div');
+  heart.className = 'heart-snow';
+  heart.innerHTML = '♥';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+  snowContainer.appendChild(heart);
+  setTimeout(() => snowContainer.removeChild(heart), 5000);
+}
+
+function buatGelembungCinta() {
+  const bubbleContainer = document.getElementById('bubble-container');
+  const bubble = document.createElement('div');
+  bubble.className = 'heart-bubble';
+  bubble.innerHTML = '♥';
+  bubble.style.left = Math.random() * 100 + 'vw';
+  bubble.style.animationDuration = (Math.random() * 5 + 5) + 's';
+  bubbleContainer.appendChild(bubble);
+  setTimeout(() => bubbleContainer.removeChild(bubble), 8000);
+}
+
+setInterval(buatSaljuHati, 300);
+setInterval(buatGelembungCinta, 600);
 </script>
+
+  
 
 </body>
 </html>
